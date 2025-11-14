@@ -1,1 +1,12 @@
-vendor/bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
+<?xml version="1.0"?>
+<ruleset name="Custom Rules">
+    <description>Правила для анализа качества PHP-кода</description>
+
+    <!-- Основные наборы правил -->
+    <rule ref="cleancode" />
+    <rule ref="codesize" />
+    <rule ref="controversial" />
+    <rule ref="design" />
+    <rule ref="naming" />
+    <rule ref="unusedcode" />
+</ruleset>

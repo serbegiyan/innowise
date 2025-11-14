@@ -3,11 +3,12 @@ services:
     build:
       context: ./docker/php
     volumes:
-      - .:/var/www
+      - .:/app
     networks:
       - internal_test
     expose:
       - "9000"
+    working_dir: /app
 
   nginx:
     image: nginx:latest
