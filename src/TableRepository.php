@@ -1,8 +1,9 @@
 <?php
 
+namespace App;
+
 class TableRepository
 {
-
     private PDO $pdo;
 
     public function __construct(PDO $pdo)
@@ -10,7 +11,7 @@ class TableRepository
         $this->pdo = $pdo;
     }
 
-    public function getAllTables() : array
+    public function getAllTables(): array
     {
         $stmt = $this->pdo->query("SELECT id, name FROM users");
         $tables = [];
@@ -21,6 +22,4 @@ class TableRepository
 
         return $tables;
     }
-
-
 }

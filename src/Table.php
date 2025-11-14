@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Table
 {
     private int $id;
@@ -11,10 +13,8 @@ class Table
         $this->name = $name;
     }
 
-    public function getName () : string
+    public function getName(): string
     {
         return $this->name;
     }
-
-
 }
