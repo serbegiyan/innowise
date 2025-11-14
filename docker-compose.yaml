@@ -1,0 +1,46 @@
+services:
+  php:
+    build:
+      context: ./docker/php
+    volumes:
+      - .:/var/www
+    networks:
+      - internal_test
+    expose:
+      - "9000"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - internal_test
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: profit
+      POSTGRES_PASSWORD: profit
+      POSTGRES_DB: profit
+    volumes:
+      - pgdata:/var/lib/postgresql
+    networks:
+      - internal_test
+
+volumes:
+  pgdata:
+
+networks:
+   internal_test:
+     driver: bridge
+     ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
